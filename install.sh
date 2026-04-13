@@ -5,7 +5,7 @@ set -euo pipefail
 # Copies rules and workflows to Antigravity's expected locations.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AGENT_DIR="$SCRIPT_DIR/agent"
+SKILL_DIR="$SCRIPT_DIR/skills"
 
 usage() {
     cat <<EOF
@@ -73,8 +73,8 @@ copy_files() {
 }
 
 # Verify source exists
-if [ ! -d "$AGENT_DIR/rules" ] || [ ! -d "$AGENT_DIR/workflows" ]; then
-    echo "Error: agent/rules/ or agent/workflows/ not found in $SCRIPT_DIR"
+if [ ! -d "$SKILL_DIR/rules" ] || [ ! -d "$SKILL_DIR/workflows" ]; then
+    echo "Error: skills/rules/ or skills/workflows/ not found in $SCRIPT_DIR"
     exit 1
 fi
 
@@ -87,8 +87,8 @@ if [ "$GLOBAL" = true ]; then
     mkdir -p "$RULES_DEST" "$WORKFLOWS_DEST"
     echo "Installing globally to ~/.gemini/antigravity/"
     echo ""
-    copy_files "$AGENT_DIR/rules" "$RULES_DEST" "rules"
-    copy_files "$AGENT_DIR/workflows" "$WORKFLOWS_DEST" "workflows"
+    copy_files "$SKILL_DIR/rules" "$RULES_DEST" "rules"
+    copy_files "$SKILL_DIR/workflows" "$WORKFLOWS_DEST" "workflows"
 elif [ -n "$TARGET" ]; then
     # Project: both rules and workflows
     RULES_DEST="$TARGET/.agents/rules"
@@ -96,8 +96,8 @@ elif [ -n "$TARGET" ]; then
     mkdir -p "$RULES_DEST" "$WORKFLOWS_DEST"
     echo "Installing to $TARGET/.agents/"
     echo ""
-    copy_files "$AGENT_DIR/rules" "$RULES_DEST" "rules"
-    copy_files "$AGENT_DIR/workflows" "$WORKFLOWS_DEST" "workflows"
+    copy_files "$SKILL_DIR/rules" "$RULES_DEST" "rules"
+    copy_files "$SKILL_DIR/workflows" "$WORKFLOWS_DEST" "workflows"
 else
     # Current directory: both rules and workflows
     RULES_DEST=".agents/rules"
@@ -105,8 +105,8 @@ else
     mkdir -p "$RULES_DEST" "$WORKFLOWS_DEST"
     echo "Installing to .agents/ in current directory"
     echo ""
-    copy_files "$AGENT_DIR/rules" "$RULES_DEST" "rules"
-    copy_files "$AGENT_DIR/workflows" "$WORKFLOWS_DEST" "workflows"
+    copy_files "$SKILL_DIR/rules" "$RULES_DEST" "rules"
+    copy_files "$SKILL_DIR/workflows" "$WORKFLOWS_DEST" "workflows"
 fi
 
 echo ""

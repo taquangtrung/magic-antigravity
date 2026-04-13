@@ -25,7 +25,7 @@ Identify existing patterns, conventions, and constraints.
 - Include: what is NOT in scope (YAGNI boundaries)
 
 # Write Design Doc
-Save to `.agents/plans/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md` and commit.
+Save to `.agents/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md` where the time is based on the current machine's timezone and commit.
 
 The doc should contain:
 - Goal and constraints

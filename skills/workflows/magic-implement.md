@@ -14,7 +14,7 @@ This is the living progress tracker.
 # Execute Each Task
 For each task:
 
-1. Mark as [/] in-progress in task.md
+1. Mark as [/] in-progress in task.md and also mark [/] in the plan file.
 
 2. Follow each step exactly (TDD cycle):
    - Write failing test → run, verify it fails for the right reason
@@ -33,16 +33,18 @@ For each task:
    - Tests verify real logic (not mocks)?
    - DRY principle followed?
 
-5. Mark as [x] completed in task.md
+5. Mark as [x] completed in task.md and laso mark [x] in the plan file.
 
 # Completion
 After all tasks complete:
+- Review again the plan file to make sure all tasks are completed and mark with [x]
 - Automatically proceed to the verification process
   (or the user can invoke /magic-verify manually)
 
 # Red Flags
 - Never skip self-reviews
 - Never proceed with unfixed issues
+- Never proceed with incompleted tasks ([ ]) or in-progress tasks ([/]) in the plan file.
 - Stop and ask if blocked — don't guess
 - Never write production code without a failing test first
 - Never claim "tests pass" without running them

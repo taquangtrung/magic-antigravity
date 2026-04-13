@@ -3,7 +3,7 @@ description: Write comprehensive implementation plans with TDD tasks. Every step
 ---
 
 # Load Spec
-Read the design spec from `.agents/plans/specs/`. If no spec exists,
+Read the design spec from `.agents/specs/`. If no spec exists,
 suggest /magic-brainstorm first.
 
 # Scope Check
@@ -49,7 +49,7 @@ Verify:
 - No circular dependencies between tasks
 
 # Save Plan
-Save to `.agents/plans/YYYY-MM-DD-hh-mm-ss-<feature-name>.md`
+Save to `.agents/plans/YYYY-MM-DD-hh-mm-ss-<feature-name>.md` where the time is based on the current machine's timezone.
 
 # Transition
 Once the user approves the plan, automatically proceed to
