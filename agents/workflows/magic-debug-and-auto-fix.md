@@ -21,6 +21,12 @@ description: Systematic root cause debugging. Find the real cause BEFORE attempt
 3. One variable at a time — never change multiple things
 4. If 3+ fix attempts failed: STOP and question the architecture
 
+# Plan
+1. Create failing test reproducing the bug
+2. Implement single fix addressing root cause
+3. Verify fix (test passes, no regressions)
+4. Check: does the fix address root cause or just symptoms?
+
 # Implementation
 1. Create failing test reproducing the bug
 2. Implement single fix addressing root cause

@@ -13,6 +13,9 @@ cd antigravity-magicskills
 
 # Install globally on Linux/macOS
 ./install.sh --global
+
+# Install globally on Windows (PowerShell)
+.\install.ps1 --global
 ```
 
 ## The Pipeline
@@ -69,24 +72,38 @@ The orchestrator rule automatically classifies tasks and starts the appropriate 
   ./install.sh --global --force
   ```
 
-- NOTE: Windows installation is not supported yet. Will be supported soon.
+- On Windows (PowerShell):
+
+  ```powershell
+  # Global (all projects)
+  .\install.ps1 --global
+
+  # Specific project
+  .\install.ps1 C:\path\to\project
+
+  # Current directory
+  .\install.ps1
+
+  # Overwrite existing files
+  .\install.ps1 --global --force
+  ```
 
 ### Where Files Go
 
-- On Linux/macOS
+Files are installed to the same relative paths on both Linux/macOS and Windows:
 
-  | Install Type | Rules | Workflows |
-  |:-------------|:------|:----------|
-  | Global | `~/.gemini/antigravity/rules/` | `~/.gemini/antigravity/global_workflows/` |
-  | Project | `<project>/.gemini/rules/` | `<project>/.gemini/workflows/` |
+| Install Type | Rules | Workflows | Skills |
+|:-------------|:------|:----------|:-------|
+| Global | `~/.gemini/antigravity/rules/` | `~/.gemini/antigravity/global_workflows/` | `~/.gemini/skills/` |
+| Project | `<project>/.agents/rules/` | `<project>/.agents/workflows/` | `~/.gemini/skills/` |
 
-- NOTE: Windows installation is not supported yet. Will be supported soon.
+*Note on Windows: `~` resolves to your user home directory (e.g., `C:\Users\Username`).*
 
 ## Workflow Artifacts
 
-Workflows save specs and plans to `.agent/plans/` in the target project:
-- Specs: `.agent/plans/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md`
-- Plans: `.agent/plans/YYYY-MM-DD-hh-mm-ss-<feature-name>.md`
+Workflows save specs and plans to `.agents/plans/` in the target project:
+- Specs: `.agents/plans/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md`
+- Plans: `.agents/plans/YYYY-MM-DD-hh-mm-ss-<feature-name>.md`
 
 ## Reference Docs
 

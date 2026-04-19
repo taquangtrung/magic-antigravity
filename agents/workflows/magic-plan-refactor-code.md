@@ -1,5 +1,5 @@
 ---
-description: Write comprehensive implementation plans with TDD tasks. Every step has real code, no placeholders.
+description: Write a comprehensive plan to refactor with TDD tasks. Every step has real code, no placeholders.
 ---
 
 # Load Spec
@@ -24,11 +24,9 @@ Each task = 2-5 minutes of work with this structure:
 
 ## Task N: [Name]
 **Files:** Create/Modify/Test paths
-- [ ] Write failing test (with code)
-- [ ] Run test, verify it fails
+- [ ] Run existing tests, record the test status before refactoring
 - [ ] Write minimal implementation (with code)
-- [ ] Run test, verify it passes
-- [ ] Commit
+- [ ] Ask users to review the plan. Suggest /magic-implement if they agree
 
 **Verification:** exact command to run
 

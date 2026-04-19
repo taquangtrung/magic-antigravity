@@ -1,4 +1,5 @@
 ---
+name: magic-brainstorm
 description: Turn ideas into fully formed designs through collaborative dialogue. Do NOT write any code until the user approves the design.
 ---
 
@@ -25,7 +26,7 @@ Identify existing patterns, conventions, and constraints.
 - Include: what is NOT in scope (YAGNI boundaries)
 
 # Write Design Doc
-Save to `.agents/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md` where the time is based on the current machine's timezone and commit.
+Save to `.agents/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md` where the time is based on the current machine's timezone.
 
 The doc should contain:
 - Goal and constraints
@@ -46,7 +47,7 @@ Wait for explicit approval.
 
 # Transition
 Once the user approves the spec, automatically proceed to the plan
-writing process (or the user can invoke /magic-write-plan manually).
+writing process: choose among the existing plan skills or ask the user to manually choose it.
 
 # Key Principles
 - YAGNI ruthlessly — remove unnecessary features
