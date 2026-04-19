@@ -8,42 +8,46 @@ $Force = $false
 $Target = ""
 
 for ($i = 0; $i -lt $args.Count; $i++) {
-    $arg = $args[$i]
-    switch -Regex ($arg) {
-        "^--global$" { $GlobalInstall = $true }
-        "^--force$" { $Force = $true }
-        "^--help$" {
-            Write-Host "Usage: .\install.ps1 [OPTIONS] [TARGET_DIR]"
-            Write-Host ""
-            Write-Host "Install Superpowers rules, workflows, and skills for Antigravity."
-            Write-Host ""
-            Write-Host "Options:"
-            Write-Host "  --global       Install globally to ~\.gemini\antigravity\"
-            Write-Host "                 Rules  -> ~\.gemini\antigravity\rules\"
-            Write-Host "                 Workflows -> ~\.gemini\antigravity\global_workflows\"
-            Write-Host "                 Skills -> ~\.gemini\skills\"
-            Write-Host "  --force        Overwrite existing files"
-            Write-Host "  --help         Show this help"
-            Write-Host ""
-            Write-Host "Arguments:"
-            Write-Host "  TARGET_DIR     Install to a specific project directory"
-            Write-Host "                 (copies rules & workflows to TARGET_DIR\.agents\)"
-            Write-Host "                 (skills are always installed to ~\.gemini\skills\)"
-            Write-Host ""
-            Write-Host "Examples:"
-            Write-Host "  .\install.ps1 --global                  # Global install"
-            Write-Host "  .\install.ps1 --global --force          # Global install, overwrite existing"
-            Write-Host "  .\install.ps1 C:\path\to\project        # Project install (rules + workflows)"
-            Write-Host "  .\install.ps1                           # Install to current directory"
-            exit 0
-        }
-        "^--.*" {
-            Write-Host "Unknown option: $arg"
-            exit 1
-        }
-        default {
-            $Target = $arg
-        }
+    $arg = "$($args[$i])".Trim()
+    $argLower = $arg.ToLower()
+    
+    if ($argLower -eq "--global" -or $argLower -eq "-global") {
+        $GlobalInstall = $true
+    }
+    elseif ($argLower -eq "--force" -or $argLower -eq "-force") {
+        $Force = $true
+    }
+    elseif ($argLower -eq "--help" -or $argLower -eq "-help") {
+        Write-Host "Usage: .\install.ps1 [OPTIONS] [TARGET_DIR]"
+        Write-Host ""
+        Write-Host "Install Superpowers rules, workflows, and skills for Antigravity."
+        Write-Host ""
+        Write-Host "Options:"
+        Write-Host "  --global       Install globally to ~\.gemini\antigravity\"
+        Write-Host "                 Rules  -> ~\.gemini\antigravity\rules\"
+        Write-Host "                 Workflows -> ~\.gemini\antigravity\global_workflows\"
+        Write-Host "                 Skills -> ~\.gemini\skills\"
+        Write-Host "  --force        Overwrite existing files"
+        Write-Host "  --help         Show this help"
+        Write-Host ""
+        Write-Host "Arguments:"
+        Write-Host "  TARGET_DIR     Install to a specific project directory"
+        Write-Host "                 (copies rules & workflows to TARGET_DIR\.agents\)"
+        Write-Host "                 (skills are always installed to ~\.gemini\skills\)"
+        Write-Host ""
+        Write-Host "Examples:"
+        Write-Host "  .\install.ps1 --global                  # Global install"
+        Write-Host "  .\install.ps1 --global --force          # Global install, overwrite existing"
+        Write-Host "  .\install.ps1 C:\path\to\project        # Project install (rules + workflows)"
+        Write-Host "  .\install.ps1                           # Install to current directory"
+        exit 0
+    }
+    elseif ($argLower.StartsWith("-")) {
+        Write-Host "Unknown option: $($args[$i])"
+        exit 1
+    }
+    else {
+        $Target = $args[$i]
     }
 }
 
