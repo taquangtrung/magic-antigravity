@@ -21,7 +21,7 @@ Report:
 - Exit code
 
 # Spec Compliance Review
-- Read the approved spec from `.agents/plans/specs/`
+- Read the approved spec from `.agents/specs/`
 - Compare implementation against every requirement
 - Check every requirement is covered
 - Check nothing extra was built (YAGNI)
