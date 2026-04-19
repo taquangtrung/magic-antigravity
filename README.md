@@ -102,7 +102,7 @@ Files are installed to the same relative paths on both Linux/macOS and Windows:
 ## Workflow Artifacts
 
 Workflows save specs and plans to `.agents/plans/` in the target project:
-- Specs: `.agents/plans/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md`
+- Specs: `.agents/specs/YYYY-MM-DD-hh-mm-ss-<topic>-design.md`
 - Plans: `.agents/plans/YYYY-MM-DD-hh-mm-ss-<feature-name>.md`
 
 ## Reference Docs
